@@ -1,17 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import { Camera } from "lucide-react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <p>Aditya</p>
-      <Camera color="red" size={48} />;
-    </>
+    <div className="app-container p-4 sm:p-6 md:p-8">
+      <div className="app">
+        <nav>
+          <h1>Forkify</h1>
+          <div>
+            <p>About us</p>
+            <p>Contact us</p>
+          </div>
+        </nav>
+      </div>
+    </div>
   );
 }
 

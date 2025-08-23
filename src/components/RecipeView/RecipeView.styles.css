@@ -1,0 +1,13 @@
+.recipe-view {
+  display: flex;
+  height: 75%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.empty-view-text {
+  margin: 2rem 0;
+  font-size: 1.3rem;
+}

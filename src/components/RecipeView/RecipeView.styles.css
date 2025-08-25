@@ -1,5 +1,11 @@
 .recipe-view {
+  display: flex;
+  justify-content: center;
   height: 90%;
+}
+
+.empty-view {
+  margin-top: 6.8rem;
 }
 
 .empty-view-text {

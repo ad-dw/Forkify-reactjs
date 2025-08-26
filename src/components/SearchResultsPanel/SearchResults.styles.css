@@ -1,3 +1,9 @@
 .search-results-panel {
   flex: 1;
+  margin: 0.5rem 0;
+}
+
+.search-result-item {
+  height: 2rem;
+  padding: 0.25rem;
 }

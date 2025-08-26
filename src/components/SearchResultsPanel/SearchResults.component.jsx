@@ -1,4 +1,4 @@
-import React from "react";
+import "./SearchResults.styles.css";
 
 const SearchResults = ({ results }) => {
   return (
@@ -6,7 +6,9 @@ const SearchResults = ({ results }) => {
       {results && results.length > 0 ? (
         <ul>
           {results.map((item, idx) => (
-            <li key={idx}>{item.title}</li>
+            <li key={idx} className="search-result-item">
+              {item.title}
+            </li>
           ))}
         </ul>
       ) : (

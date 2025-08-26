@@ -1,4 +1,5 @@
-import React from "react";
+import "./RecipeDetail.styles.css";
+import { Pointer } from "lucide-react";
 
 const RecipeDetail = ({ recipe }) => {
   return (
@@ -17,6 +18,7 @@ const RecipeDetail = ({ recipe }) => {
         </div>
       ) : (
         <div className="empty-recipe-detail">
+          <Pointer size={180} strokeWidth={0.5} />
           <p>Please select a recipe to see the details.</p>
         </div>
       )}

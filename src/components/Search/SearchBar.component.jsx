@@ -10,6 +10,8 @@ const handleChange = (event) => {
   searchRecipe(value);
 };
 
+const debounceHandleChange = debounce(handleChange, 500);
+
 function SearchBar() {
   return (
     <div className="search-bar">
@@ -18,7 +20,7 @@ function SearchBar() {
         placeholder="Search 1,000,000+ recipes"
         className="search-input"
         onChange={(event) => {
-          debounce(handleChange, 500)(event);
+          debounceHandleChange(event);
         }}
       />
       <button type="submit" className="search-btn" aria-label="Search recipes">

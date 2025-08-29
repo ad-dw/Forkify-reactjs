@@ -1,4 +1,4 @@
-import Axios from "../configuration/axios";
+import { Axios } from "../configuration/axios";
 
 const searchRecipe = async (keyword) => {
   const params = {

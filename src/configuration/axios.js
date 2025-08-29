@@ -1,11 +1,23 @@
 import axios from "axios";
 
-const Axios = axios.create({
+export const Axios = axios.create({
   baseURL: "https://forkify-api.jonas.io/api/v2/recipes",
   timeout: 20000,
   params: {
-    key: "25286f67-67ec-41fd-b574-5432de7159d7",
+    key: import.meta.env.VITE_API_KEY,
   },
 });
 
-export default Axios;
+export const AxiosResponseInterceptor = Axios.interceptors.response.use(
+  (response) => {
+    // Handle successful responses
+    return response;
+  },
+  (error) => {
+    // Handle errors
+    if (error.code === "ECONNABORTED") {
+      console.error("Request took longer than usual. Please try again.");
+    }
+    return Promise.reject(error);
+  }
+);

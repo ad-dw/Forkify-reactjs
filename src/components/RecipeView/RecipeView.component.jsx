@@ -5,42 +5,45 @@ import RecipeDetail from "../RecipeDetail/RecipeDetail.component";
 
 const recipe = [
   {
-    title: "Spaghetti Carbonara",
-    ingredients: [
-      "200g spaghetti",
-      "100g pancetta",
-      "2 large eggs",
-      "50g pecorino cheese",
-      "50g parmesan cheese",
-      "2 cloves of garlic",
-      "Salt and black pepper",
-    ],
-    instructions: [
-      "Cook the spaghetti in a large pot of boiling salted water until al dente.",
-      "In a separate pan, fry the pancetta with the garlic until crispy. Remove garlic and discard.",
-      "In a bowl, beat the eggs and mix in the grated pecorino and parmesan cheese.",
-      "Drain the spaghetti and return to the pot. Quickly mix in the pancetta and then the egg and cheese mixture. Stir well to create a creamy sauce.",
-      "Season with salt and black pepper to taste. Serve immediately with extra grated cheese on top.",
-    ],
+    publisher: "Two Peas and Their Pod",
+    image_url:
+      "http://forkify-api.herokuapp.com/images/SpinachBakedShells53ded.jpg",
+    title: "Baked Pasta with Spinach and Ricotta",
+    id: "664c8f193e7aa067e94e825d",
   },
   {
-    title: "Spaghetti Carbonara",
-    ingredients: [
-      "200g spaghetti",
-      "100g pancetta",
-      "2 large eggs",
-      "50g pecorino cheese",
-      "50g parmesan cheese",
-      "2 cloves of garlic",
-      "Salt and black pepper",
-    ],
-    instructions: [
-      "Cook the spaghetti in a large pot of boiling salted water until al dente.",
-      "In a separate pan, fry the pancetta with the garlic until crispy. Remove garlic and discard.",
-      "In a bowl, beat the eggs and mix in the grated pecorino and parmesan cheese.",
-      "Drain the spaghetti and return to the pot. Quickly mix in the pancetta and then the egg and cheese mixture. Stir well to create a creamy sauce.",
-      "Season with salt and black pepper to taste. Serve immediately with extra grated cheese on top.",
-    ],
+    publisher: "Bon Appetit",
+    image_url:
+      "http://forkify-api.herokuapp.com/images/mare_lobster_pasta_with_herbed_cream_sauce_h3bbc.jpg",
+    title: "Lobster Pasta with Herbed Cream Sauce",
+    id: "664c8f193e7aa067e94e87d5",
+  },
+  {
+    publisher: "Smitten Kitchen",
+    image_url:
+      "http://forkify-api.herokuapp.com/images/3536930521_dcbfce4033c3a0.jpg",
+    title: "asparagus, goat cheese and lemon pasta",
+    id: "664c8f193e7aa067e94e87bc",
+  },
+  {
+    publisher: "The Pioneer Woman",
+    image_url: "http://forkify-api.herokuapp.com/images/PastaCarbonara061c.jpg",
+    title: "Pastor Ryan’s Pasta Carbonara",
+    id: "664c8f193e7aa067e94e86db",
+  },
+  {
+    publisher: "The Pioneer Woman",
+    image_url:
+      "http://forkify-api.herokuapp.com/images/4814287904_bb43e024c9_be8a9.jpg",
+    title: "Grilled Chicken with Lemon Basil Pasta",
+    id: "664c8f193e7aa067e94e86ad",
+  },
+  {
+    publisher: "Epicurious",
+    image_url:
+      "http://forkify-api.herokuapp.com/images/epicuriousfacebook511b.png",
+    title: "Pasta with Chickpeas and Charred Tomatoes",
+    id: "664c8f193e7aa067e94e89d8",
   },
 ];
 

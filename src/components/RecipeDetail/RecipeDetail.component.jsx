@@ -17,7 +17,12 @@ const RecipeDetail = ({ recipe }) => {
           </ul>
         </div>
       ) : (
-        <div className="empty-recipe-detail">
+        <div
+          className="empty-recipe-detail"
+          tabIndex={0}
+          role="region"
+          aria-label="No recipe selected"
+        >
           <Pointer size={180} strokeWidth={0.5} />
           <p>Please select a recipe to see the details.</p>
         </div>

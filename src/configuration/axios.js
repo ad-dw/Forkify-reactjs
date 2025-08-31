@@ -1,4 +1,5 @@
 import axios from "axios";
+import { notifyError } from "../helpers/notify";
 
 export const Axios = axios.create({
   baseURL: "https://forkify-api.jonas.io/api/v2/recipes",
@@ -16,7 +17,7 @@ export const AxiosResponseInterceptor = Axios.interceptors.response.use(
   (error) => {
     // Handle errors
     if (error.code === "ECONNABORTED") {
-      console.error("Request took longer than usual. Please try again.");
+      notifyError("Request took longer than usual. Please try again.");
     }
     return Promise.reject(error);
   }

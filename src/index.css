@@ -7,3 +7,39 @@
 *:focus {
   outline-offset: 0.25rem;
 }
+
+.custom-toast {
+  padding: 1rem 3rem 1rem 1rem;
+  color: white;
+  font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: min(20rem, 100%);
+  height: 1.5rem;
+  line-height: 2rem;
+  white-space: nowrap;
+  display: inline-block;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.Toastify__toast-icon {
+  width: 0px;
+}
+
+.custom-error-toast {
+  background-color: #e31837;
+}
+
+.Toastify__close-button--light {
+  color: white;
+  opacity: 0.6;
+}
+
+.Toastify__close-button--light:focus {
+  outline: 2px solid white;
+  outline-offset: -0.25rem;
+}
+.custom-success-toast {
+  background-color: #00b140;
+}

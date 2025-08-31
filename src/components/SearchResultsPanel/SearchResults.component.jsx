@@ -38,7 +38,6 @@ const SearchResults = ({ results }) => {
   }, []);
 
   useEffect(() => {
-    console.log(currentIndex, previousIndex);
     const searchResultsList = document.querySelector("#" + searchResultsListID);
     if (!searchResultsList) return;
     const nextItem = searchResultsList.querySelector(

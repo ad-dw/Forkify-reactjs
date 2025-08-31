@@ -4,7 +4,6 @@ import searchRecipe from "../../helpers/apiRequests";
 import { debounce } from "../../helpers/debounce";
 
 const handleChange = (event) => {
-  console.log(event);
   const value = event.target.value;
   if (value.length < 3) return;
   searchRecipe(value);

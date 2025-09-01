@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import "./SearchResults.styles.css";
 
 const searchResultsListID = "search-results-panel";
+let initialRender = true;
 
 const SearchResults = ({ results }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [previousIndex, setPreviousIndex] = useState(results.length);
+  const [previousIndex, setPreviousIndex] = useState(0);
 
   const keyboardNavigation = (e) => {
     if (e.key === "ArrowDown") {
@@ -47,8 +48,10 @@ const SearchResults = ({ results }) => {
       `[data-index="${previousIndex}"]`
     );
     nextItem?.setAttribute("tabIndex", 0);
-    previousItem?.setAttribute("tabIndex", -1);
-    nextItem?.focus();
+    if (currentIndex !== previousIndex) {
+      previousItem?.setAttribute("tabIndex", -1);
+      nextItem?.focus();
+    }
   }, [currentIndex]);
 
   return (

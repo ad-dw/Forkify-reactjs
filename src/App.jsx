@@ -6,14 +6,19 @@ import { Axios, AxiosResponseInterceptor } from "./configuration/axios";
 
 function App() {
   useEffect(() => {
+    const app = document.querySelector("#app");
+    const firstFocusableElement = app?.querySelector(
+      "a, button, input, [tabindex='0']"
+    );
+    firstFocusableElement?.focus();
     return () => {
       Axios.interceptors.response.eject(AxiosResponseInterceptor);
     };
   }, []);
 
   return (
-    <div className="app-container p-4 sm:p-6 md:p-8">
-      <div className="app">
+    <div className="app-container">
+      <div className="app" id="app">
         <NavigationBar />
         <RecipeView />
       </div>

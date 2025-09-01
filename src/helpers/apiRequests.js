@@ -1,5 +1,5 @@
 import { Axios } from "../configuration/axios";
-import { notifyError, notifySuccess } from "./notify";
+import { notifyError } from "./notify";
 
 const searchRecipe = async (keyword) => {
   const params = {
@@ -9,7 +9,7 @@ const searchRecipe = async (keyword) => {
     const response = await Axios.get("/", { params });
     console.log(response.data);
   } catch (error) {
-    console.error("Error searching recipe:", error);
+    notifyError("Error searching recipe:", error.message);
     throw error;
   }
 };

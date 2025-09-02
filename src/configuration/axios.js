@@ -4,10 +4,14 @@ import { notifyError } from "../helpers/notify";
 export const Axios = axios.create({
   baseURL: "https://forkify-api.jonas.io/api/v2/recipes",
   timeout: 20000,
-  params: {
-    key: import.meta.env.VITE_API_KEY,
-  },
 });
+
+export const AxiosRequestInterceptor = Axios.interceptors.request.use(
+  (config) => {
+    config.params = { ...config.params, key: import.meta.env.VITE_API_KEY };
+    return config;
+  }
+);
 
 export const AxiosResponseInterceptor = Axios.interceptors.response.use(
   (response) => {

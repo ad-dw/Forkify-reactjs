@@ -1,7 +1,7 @@
 import { Axios } from "../configuration/axios";
 import { notifyError } from "./notify";
 
-const searchRecipe = async (keyword) => {
+export const searchRecipe = async (keyword) => {
   const params = {
     search: keyword,
   };
@@ -14,4 +14,12 @@ const searchRecipe = async (keyword) => {
   }
 };
 
-export default searchRecipe;
+export const searchRecipeDetails = async (id) => {
+  try {
+    const response = await Axios.get(`/${id}`);
+    console.log(response.data);
+  } catch (error) {
+    notifyError("Error fetching recipe details:", error.message);
+    throw error;
+  }
+};

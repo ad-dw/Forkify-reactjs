@@ -2,7 +2,11 @@ import { useEffect } from "react";
 import "./App.css";
 import NavigationBar from "./components/Navigation/NavigationBar.component";
 import RecipeView from "./components/RecipeView/RecipeView.component";
-import { Axios, AxiosResponseInterceptor } from "./configuration/axios";
+import {
+  Axios,
+  AxiosResponseInterceptor,
+  AxiosRequestInterceptor,
+} from "./configuration/axios";
 
 function App() {
   useEffect(() => {
@@ -12,6 +16,7 @@ function App() {
     );
     firstFocusableElement?.focus();
     return () => {
+      Axios.interceptors.request.eject(AxiosRequestInterceptor);
       Axios.interceptors.response.eject(AxiosResponseInterceptor);
     };
   }, []);

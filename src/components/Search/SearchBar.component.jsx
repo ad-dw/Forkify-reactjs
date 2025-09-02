@@ -1,6 +1,6 @@
 import "./SearchBar.styles.css";
 import { Search } from "lucide-react";
-import searchRecipe from "../../helpers/apiRequests";
+import { searchRecipe } from "../../helpers/apiRequests";
 import { debounce } from "../../helpers/debounce";
 
 const handleChange = (event) => {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./SearchResults.styles.css";
+import SearchResultItem from "../SearchResultItem/SearchResultItem.component";
 
 const searchResultsListID = "search-results-panel";
 let initialRender = true;
@@ -29,10 +30,6 @@ const SearchResults = ({ results }) => {
     const searchResultsList = document.querySelector("#" + searchResultsListID);
     if (!searchResultsList) return;
     searchResultsList.addEventListener("keydown", keyboardNavigation);
-    const firstFocusableItem = searchResultsList.querySelector(
-      `[data-index='${currentIndex}']`
-    );
-    firstFocusableItem?.setAttribute("tabIndex", 0);
     return () => {
       searchResultsList.removeEventListener("keydown", keyboardNavigation);
     };
@@ -59,24 +56,12 @@ const SearchResults = ({ results }) => {
       {results && results.length > 0 ? (
         <ul className="search-results-list">
           {results.map((item, idx) => (
-            <li
+            <SearchResultItem
               key={idx}
-              className="search-result-item"
-              tabIndex={-1}
-              data-index={idx}
-              title={`${item.title} by ${item.publisher}`}
-              aria-label={`${item.title} by ${item.publisher}`}
-            >
-              <img
-                src={item.image_url}
-                alt={item.title}
-                className="recipe-preview-image"
-              />
-              <div className="recipe-preview-info">
-                <h2 className="recipe-preview-title">{item.title}</h2>
-                <p className="recipe-preview-publisher">{item.publisher}</p>
-              </div>
-            </li>
+              item={item}
+              idx={idx}
+              currentIndex={currentIndex}
+            />
           ))}
         </ul>
       ) : (

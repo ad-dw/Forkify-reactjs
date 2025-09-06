@@ -1,5 +1,6 @@
 import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
+import { CirclePlus, CircleMinus, Bookmark } from "lucide-react";
 
 const recipe = {
   publisher: "Two Peas and Their Pod",
@@ -83,7 +84,37 @@ const RecipeDetail = () => {
         <div className="recipe-detail">
           <h2 className="recipe-title">{recipe.title}</h2>
           <img src={recipe.image_url} alt={recipe.title} />
-          <p>{recipe.publisher}</p>
+          <div className="cooking-info">
+            <p>{recipe.cooking_time} minutes</p>
+            <div
+              className="servings-control"
+              role="group"
+              aria-label="Adjust servings"
+            >
+              <button
+                aria-label="Increase servings"
+                title="Increase servings"
+                className="rd-btn"
+              >
+                <CirclePlus className="icon" />
+              </button>
+              <p>{recipe.servings} servings</p>
+              <button
+                aria-label="Decrease servings"
+                title="Decrease servings"
+                className="rd-btn"
+              >
+                <CircleMinus className="icon" />
+              </button>
+            </div>
+            <button
+              aria-label="Bookmark this recipe"
+              title="Bookmark this recipe"
+              className="bookmark-button rd-btn"
+            >
+              <Bookmark className="icon" />
+            </button>
+          </div>
           <ul>
             {recipe.ingredients &&
               recipe.ingredients.map((ingredient, idx) => (

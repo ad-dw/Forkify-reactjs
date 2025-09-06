@@ -17,14 +17,12 @@ function SearchBar() {
       <input
         type="text"
         placeholder="Search 1,000,000+ recipes"
+        aria-label="Search over a million recipes"
         className="search-input"
         onChange={(event) => {
           debounceHandleChange(event);
         }}
       />
-      <button type="submit" className="search-btn" aria-label="Search recipes">
-        <Search size={28} />
-      </button>
     </div>
   );
 }

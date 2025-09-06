@@ -10,7 +10,6 @@ function SearchResultItem({ item, idx, currentIndex }) {
   };
 
   const handleKeyDown = (e) => {
-    e.preventDefault();
     if (e.key === "Enter" || e.key === " ") {
       recipeClickHandler();
     }

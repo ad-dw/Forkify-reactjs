@@ -35,6 +35,40 @@
   line-height: 1.45;
 }
 
+.cooking-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-weight: 500;
+  font-size: 1.2rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.servings-control {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  height: 3.5rem;
+}
+
+.bookmark-button {
+  background: transparent;
+  cursor: pointer;
+}
+
+.rd-btn {
+  border-radius: 50%;
+  padding: 0.8rem;
+  line-height: 0.9;
+}
+
+.icon {
+  margin: 0;
+}
+
 .directions {
   height: 11rem;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,

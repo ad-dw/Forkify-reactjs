@@ -34,6 +34,10 @@ svg {
   gap: 2rem;
 }
 
+.nav-logo {
+  padding: 0 1rem;
+}
+
 .small-screen-menu {
   position: absolute;
   width: 20rem;

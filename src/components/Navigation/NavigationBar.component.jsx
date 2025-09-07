@@ -30,8 +30,8 @@ function NavigationBar() {
 
   return (
     <nav className="navigation-bar">
-      <Link to="/" aria-label="Home">
-        <Utensils size={28} />
+      <Link to="/" aria-label="Home" className="nav-logo">
+        <Utensils size={28} className="icon" />
         <span>Forkify</span>
       </Link>
       {smallScreen && (

@@ -90,3 +90,29 @@
   border-radius: 50em;
   border: 4px solid transparent;
 }
+
+.ingredients-list {
+  list-style: none;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.5rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.ingredient-item {
+  font-size: 1.1rem;
+  text-align: start;
+  padding: 0.2rem;
+  display: flex;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.ingredient-text {
+  margin-left: 0.5rem;
+}

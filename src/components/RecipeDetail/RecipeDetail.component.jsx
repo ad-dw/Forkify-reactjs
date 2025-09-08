@@ -1,6 +1,6 @@
 import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
-import { CirclePlus, CircleMinus, Bookmark } from "lucide-react";
+import { CirclePlus, CircleMinus, Bookmark, Check } from "lucide-react";
 
 const recipe = {
   publisher: "Two Peas and Their Pod",
@@ -115,10 +115,16 @@ const RecipeDetail = () => {
               <Bookmark className="icon" />
             </button>
           </div>
-          <ul>
+          <ul className="ingredients-list">
             {recipe.ingredients &&
               recipe.ingredients.map((ingredient, idx) => (
-                <li key={idx}>{ingredient.description}</li>
+                <li key={idx} className="ingredient-item">
+                  <Check size={24} className="icon" />
+                  <span className="ingredient-text">
+                    {ingredient.quantity} {ingredient.unit}{" "}
+                    {ingredient.description}
+                  </span>
+                </li>
               ))}
           </ul>
           <div className="directions">

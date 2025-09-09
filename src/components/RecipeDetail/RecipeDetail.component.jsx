@@ -1,6 +1,6 @@
 import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
-import { CirclePlus, CircleMinus, Bookmark, Check } from "lucide-react";
+import { CirclePlus, CircleMinus, Bookmark, Check, Clock3 } from "lucide-react";
 
 const recipe = {
   publisher: "Two Peas and Their Pod",
@@ -85,7 +85,9 @@ const RecipeDetail = () => {
           <h2 className="recipe-title">{recipe.title}</h2>
           <img src={recipe.image_url} alt={recipe.title} />
           <div className="cooking-info">
-            <p>{recipe.cooking_time} minutes</p>
+            <p>
+              <Clock3 /> {recipe.cooking_time} minutes
+            </p>
             <div
               className="servings-control"
               role="group"

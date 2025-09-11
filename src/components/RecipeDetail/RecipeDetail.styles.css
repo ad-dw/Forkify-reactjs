@@ -83,7 +83,7 @@
 
 .directions-link {
   padding: 0.5rem 1rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   display: inline-block;
   background: linear-gradient(white, white) padding-box,
     linear-gradient(to right, #e1b382, #2d545e) border-box;

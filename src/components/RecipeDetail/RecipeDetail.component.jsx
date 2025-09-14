@@ -1,6 +1,7 @@
 import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
 import { CirclePlus, CircleMinus, Bookmark, Check, Clock3 } from "lucide-react";
+import Fraction from "fraction.js";
 
 const recipe = {
   publisher: "Two Peas and Their Pod",
@@ -123,8 +124,8 @@ const RecipeDetail = () => {
                 <li key={idx} className="ingredient-item">
                   <Check size={24} className="icon" />
                   <span className="ingredient-text">
-                    {ingredient.quantity} {ingredient.unit}{" "}
-                    {ingredient.description}
+                    {new Fraction(ingredient.quantity).toFraction(true)}{" "}
+                    {ingredient.unit} {ingredient.description}
                   </span>
                 </li>
               ))}

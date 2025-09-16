@@ -30,7 +30,7 @@ function NavigationBar() {
 
   return (
     <nav className="navigation-bar">
-      <Link to="/" aria-label="Home" className="nav-logo">
+      <Link to="/" aria-label="Home" className="nav-logo" title="Home">
         <Utensils size={28} className="icon" />
         <span>Forkify</span>
       </Link>
@@ -53,8 +53,12 @@ function NavigationBar() {
         >
           <SearchBar />
           <div className="nav-links">
-            <Link to="/about">About</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/about" title="About" aria-label="About forkify">
+              About
+            </Link>
+            <Link to="/contact" title="Contact" aria-label="Contact forkify">
+              Contact
+            </Link>
           </div>
         </div>
       )}

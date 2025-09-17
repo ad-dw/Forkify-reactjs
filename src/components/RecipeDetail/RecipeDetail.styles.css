@@ -1,4 +1,5 @@
 .recipe-detail-container {
+  grid-template-columns: 2fr;
   width: inherit;
   flex: 2;
   display: flex;

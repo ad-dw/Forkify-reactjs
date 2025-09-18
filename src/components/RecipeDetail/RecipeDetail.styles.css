@@ -1,14 +1,10 @@
 .recipe-detail-container {
-  grid-template-columns: 2fr;
-  width: inherit;
   flex: 2;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  width: 60%;
+  min-width: 500px;
 }
 
 .recipe-detail {
-  max-width: 80%;
   position: relative;
   padding: 1rem;
   display: flex;
@@ -71,7 +67,7 @@
 }
 
 .directions {
-  height: 11rem;
+  height: max(11rem, auto);
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
@@ -80,6 +76,10 @@
   font-size: 1.5rem;
   font-weight: 500;
   margin: 0.5rem 0;
+}
+
+.directions p {
+  padding: 0.2rem;
 }
 
 .directions-link {

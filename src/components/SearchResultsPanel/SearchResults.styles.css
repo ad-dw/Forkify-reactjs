@@ -1,5 +1,7 @@
-.search-results-panel {
-  grid-template-columns: 1fr;
+#search-results-panel {
+  flex: 1;
+  width: 20%;
+  min-width: 300px;
   margin: 0.5rem 0;
 }
 
@@ -21,8 +23,8 @@
 
 .recipe-preview-info {
   margin-left: 1rem;
+  overflow: hidden;
   display: flex;
-  max-width: 100%;
   flex-direction: column;
   align-items: flex-start;
 }

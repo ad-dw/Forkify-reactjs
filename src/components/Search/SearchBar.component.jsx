@@ -1,17 +1,24 @@
 import "./SearchBar.styles.css";
-import { Search } from "lucide-react";
-import { searchRecipe } from "../../helpers/apiRequests";
+import { searchResultsAsync } from "../../redux/searchResults/searchResults.slice";
 import { debounce } from "../../helpers/debounce";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
-const handleChange = (event) => {
-  const value = event.target.value;
-  if (value.length < 3) return;
-  searchRecipe(value);
-};
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
 
-const debounceHandleChange = debounce(handleChange, 500);
+  const debounceHandleChange = debounce((event) => {
+    const value = event.target.value;
+    if (value.length < 3) return;
+    setSearchTerm(value);
+  }, 500);
 
-function SearchBar() {
+  useEffect(() => {
+    if (!searchTerm || searchTerm.length < 3) return;
+    dispatch(searchResultsAsync(searchTerm));
+  }, [searchTerm]);
+
   return (
     <div className="search-bar">
       <input
@@ -25,6 +32,6 @@ function SearchBar() {
       />
     </div>
   );
-}
+};
 
 export default SearchBar;

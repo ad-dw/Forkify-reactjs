@@ -7,7 +7,7 @@ export const searchRecipe = async (keyword) => {
   };
   try {
     const response = await Axios.get("/", { params });
-    console.log(response.data);
+    return response.data.data.recipes;
   } catch (error) {
     notifyError("Error searching recipe:", error.message);
     throw error;

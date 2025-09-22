@@ -1,27 +1,36 @@
 import { useEffect, useState } from "react";
 import "./SearchResults.styles.css";
 import SearchResultItem from "../SearchResultItem/SearchResultItem.component";
+import { useSelector } from "react-redux";
+import {
+  selectSearchError,
+  selectSearchLoading,
+  selectSearchResults,
+} from "../../redux/searchResults/searchResults.selector";
+import Spinner from "../Spinner/Spinner.component";
 
 const searchResultsListID = "search-results-panel";
-let initialRender = true;
 
-const SearchResults = ({ results }) => {
+const SearchResults = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
+  const searchResults = useSelector(selectSearchResults);
+  const loading = useSelector(selectSearchLoading);
+  const error = useSelector(selectSearchError);
 
   const keyboardNavigation = (e) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setCurrentIndex((curIdx) => {
         setPreviousIndex(curIdx);
-        return (curIdx + 1) % results.length;
+        return (curIdx + 1) % searchResults.length;
       });
     }
     if (e.key === "ArrowUp") {
       e.preventDefault();
       setCurrentIndex((prevIndex) => {
         setPreviousIndex(prevIndex);
-        return (prevIndex - 1 + results.length) % results.length;
+        return (prevIndex - 1 + searchResults.length) % searchResults.length;
       });
     }
   };
@@ -51,24 +60,40 @@ const SearchResults = ({ results }) => {
     }
   }, [currentIndex]);
 
-  return (
-    <div id={searchResultsListID}>
-      {results && results.length > 0 ? (
-        <ul className="search-results-list">
-          {results.map((item, idx) => (
-            <SearchResultItem
-              key={idx}
-              item={item}
-              idx={idx}
-              currentIndex={currentIndex}
-            />
-          ))}
-        </ul>
+  const renderableComponent = () => {
+    if (error) {
+      return (
+        <p className="error-text state-container">
+          Error in fetching recipe: {error}
+        </p>
+      );
+    } else if (loading) {
+      return (
+        <div className="state-container">
+          <Spinner />
+          <p>Loading...</p>
+        </div>
+      );
+    } else {
+      return searchResults.length === 0 ? (
+        <p className="state-container">No results found.</p>
       ) : (
-        <p>No results found.</p>
-      )}
-    </div>
-  );
+        <div id={searchResultsListID}>
+          <ul className="search-results-list">
+            {searchResults.map((item, idx) => (
+              <SearchResultItem
+                key={idx}
+                item={item}
+                idx={idx}
+                currentIndex={currentIndex}
+              />
+            ))}
+          </ul>
+        </div>
+      );
+    }
+  };
+  return renderableComponent();
 };
 
 export default SearchResults;

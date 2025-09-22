@@ -44,3 +44,10 @@
   font-size: 1rem;
   font-weight: 300;
 }
+
+.state-container {
+  flex: 1;
+  width: 20%;
+  min-width: 300px;
+  margin-top: 10rem;
+}

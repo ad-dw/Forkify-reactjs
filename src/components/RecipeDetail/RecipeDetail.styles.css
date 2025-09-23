@@ -117,3 +117,7 @@
 .ingredient-text {
   margin-left: 0.5rem;
 }
+
+.empty-recipe-detail {
+  margin-top: 10rem;
+}

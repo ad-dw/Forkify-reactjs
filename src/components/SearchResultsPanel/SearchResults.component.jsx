@@ -1,36 +1,27 @@
 import { useEffect, useState } from "react";
 import "./SearchResults.styles.css";
 import SearchResultItem from "../SearchResultItem/SearchResultItem.component";
-import { useSelector } from "react-redux";
-import {
-  selectSearchError,
-  selectSearchLoading,
-  selectSearchResults,
-} from "../../redux/searchResults/searchResults.selector";
 import Spinner from "../Spinner/Spinner.component";
 
 const searchResultsListID = "search-results-panel";
 
-const SearchResults = () => {
+const SearchResults = ({ results, loading, error }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
-  const searchResults = useSelector(selectSearchResults);
-  const loading = useSelector(selectSearchLoading);
-  const error = useSelector(selectSearchError);
 
   const keyboardNavigation = (e) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setCurrentIndex((curIdx) => {
         setPreviousIndex(curIdx);
-        return (curIdx + 1) % searchResults.length;
+        return (curIdx + 1) % results.length;
       });
     }
     if (e.key === "ArrowUp") {
       e.preventDefault();
       setCurrentIndex((prevIndex) => {
         setPreviousIndex(prevIndex);
-        return (prevIndex - 1 + searchResults.length) % searchResults.length;
+        return (prevIndex - 1 + results.length) % results.length;
       });
     }
   };
@@ -75,12 +66,12 @@ const SearchResults = () => {
         </div>
       );
     } else {
-      return searchResults.length === 0 ? (
+      return results.length === 0 ? (
         <p className="state-container">No results found.</p>
       ) : (
         <div id={searchResultsListID}>
           <ul className="search-results-list">
-            {searchResults.map((item, idx) => (
+            {results.map((item, idx) => (
               <SearchResultItem
                 key={idx}
                 item={item}

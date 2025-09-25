@@ -15,7 +15,7 @@ function RecipeView() {
   const error = useSelector(selectSearchError);
   return (
     <div className="recipe-view">
-      {!searchResults?.length ? (
+      {!searchResults?.length && !loading && !error ? (
         <div className="empty-view">
           <CookingPot size={200} strokeWidth={0.75} />
           <p className="empty-view-text">

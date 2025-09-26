@@ -14,7 +14,7 @@ function RecipeView() {
   const loading = useSelector(selectSearchLoading);
   const error = useSelector(selectSearchError);
   return (
-    <div className="recipe-view">
+    <div className="recipe-view" tabIndex={0}>
       {!searchResults?.length && !loading && !error ? (
         <div className="empty-view">
           <CookingPot size={200} strokeWidth={0.75} />

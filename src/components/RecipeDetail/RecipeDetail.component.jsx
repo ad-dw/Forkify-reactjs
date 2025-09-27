@@ -82,7 +82,7 @@ const RecipeDetail = () => {
           role="region"
           aria-label="No recipe selected"
         >
-          <Pointer size={180} strokeWidth={0.5} />
+          <Pointer size={180} strokeWidth={0.5} role="presentation" />
           <p>Please select a recipe to see the details.</p>
         </div>
       )}

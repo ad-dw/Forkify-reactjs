@@ -14,7 +14,7 @@ const RecipeDetail = () => {
           <img src={recipe.image_url} alt={recipe.title} />
           <div className="cooking-info">
             <p>
-              <Clock3 /> {recipe.cooking_time} minutes
+              <Clock3 role="presentation" /> {recipe.cooking_time} minutes
             </p>
             <div
               className="servings-control"
@@ -26,7 +26,7 @@ const RecipeDetail = () => {
                 title="Increase servings"
                 className="rd-btn"
               >
-                <CirclePlus className="icon" />
+                <CirclePlus className="icon" role="presentation" />
               </button>
               <p>{recipe.servings} servings</p>
               <button
@@ -34,7 +34,7 @@ const RecipeDetail = () => {
                 title="Decrease servings"
                 className="rd-btn"
               >
-                <CircleMinus className="icon" />
+                <CircleMinus className="icon" role="presentation" />
               </button>
             </div>
             <button
@@ -42,14 +42,14 @@ const RecipeDetail = () => {
               title="Bookmark this recipe"
               className="bookmark-button rd-btn"
             >
-              <Bookmark className="icon" />
+              <Bookmark className="icon" role="presentation" />
             </button>
           </div>
           <ul className="ingredients-list">
             {recipe.ingredients &&
               recipe.ingredients.map((ingredient, idx) => (
                 <li key={idx} className="ingredient-item">
-                  <Check size={24} className="icon" />
+                  <Check size={24} className="icon" role="presentation" />
                   <span className="ingredient-text">
                     {new Fraction(ingredient.quantity).toFraction(true)}{" "}
                     {ingredient.unit} {ingredient.description}

@@ -17,7 +17,7 @@ function RecipeView() {
     <div className="recipe-view" tabIndex={0}>
       {!searchResults?.length && !loading && !error ? (
         <div className="empty-view">
-          <CookingPot size={200} strokeWidth={0.75} />
+          <CookingPot size={200} strokeWidth={0.75} role="presentation" />
           <p className="empty-view-text">
             Start by searching for a recipe or an ingredient. Have fun!
           </p>

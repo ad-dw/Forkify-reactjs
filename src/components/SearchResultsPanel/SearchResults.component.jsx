@@ -69,7 +69,7 @@ const SearchResults = ({ results, loading, error }) => {
       return results.length === 0 ? (
         <p className="state-container">No results found.</p>
       ) : (
-        <div id={searchResultsListID}>
+        <div id={searchResultsListID} tabindex={0}>
           <ul className="search-results-list">
             {results.map((item, idx) => (
               <SearchResultItem

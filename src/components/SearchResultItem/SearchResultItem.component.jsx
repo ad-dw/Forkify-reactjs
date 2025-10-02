@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import "./SearchResultItem.styles.css";
-import { searchRecipeDetails } from "../../helpers/apiRequests";
+import { useDispatch } from "react-redux";
+import { searchResultsAsync } from "../../redux/searchResults/searchResults.slice";
 
 function SearchResultItem({ item, idx, currentIndex }) {
   const { title, image_url, publisher } = item;
+  const dispatch = useDispatch();
 
   const recipeClickHandler = () => {
-    searchRecipeDetails(item.id);
+    dispatch(searchResultsAsync(item.id));
   };
 
   const handleKeyDown = (e) => {

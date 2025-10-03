@@ -5,7 +5,7 @@ import RecipeView from "./components/RecipeView/RecipeView.component";
 import {
   Axios,
   AxiosResponseInterceptor,
-  AxiosRequestInterceptor,
+  // AxiosRequestInterceptor,
 } from "./configuration/axios";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     );
     firstFocusableElement?.focus();
     return () => {
-      Axios.interceptors.request.eject(AxiosRequestInterceptor);
+      // Axios.interceptors.request.eject(AxiosRequestInterceptor);
       Axios.interceptors.response.eject(AxiosResponseInterceptor);
     };
   }, []);

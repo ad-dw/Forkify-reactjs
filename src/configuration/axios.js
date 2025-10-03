@@ -2,16 +2,16 @@ import axios from "axios";
 import { notifyError } from "../helpers/notify";
 
 export const Axios = axios.create({
-  baseURL: "https://forkify-api.jonas.io/api/v2/recipes",
+  baseURL: "https://api.spoonacular.com/recipes",
   timeout: 20000,
 });
 
-export const AxiosRequestInterceptor = Axios.interceptors.request.use(
-  (config) => {
-    config.params = { ...config.params, key: import.meta.env.VITE_API_KEY };
-    return config;
-  }
-);
+// export const AxiosRequestInterceptor = Axios.interceptors.request.use(
+//   (config) => {
+//     config.params = { apiKey: import.meta.env.VITE_API_KEY, ...config.params };
+//     return config;
+//   }
+// );
 
 export const AxiosResponseInterceptor = Axios.interceptors.response.use(
   (response) => {

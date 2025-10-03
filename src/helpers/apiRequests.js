@@ -3,11 +3,12 @@ import { notifyError } from "./notify";
 
 export const searchRecipe = async (keyword) => {
   const params = {
-    search: keyword,
+    apiKey: import.meta.env.VITE_API_KEY,
+    titleMatch: keyword,
   };
   try {
-    const response = await Axios.get("/", { params });
-    return response.data.data.recipes;
+    const response = await Axios.get("/complexSearch", { params });
+    return response.data.results;
   } catch (error) {
     notifyError("Error searching recipe:", error.message);
     throw error;

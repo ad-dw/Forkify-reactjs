@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { searchResultsAsync } from "../../redux/searchResults/searchResults.slice";
 
 function SearchResultItem({ item, idx, currentIndex }) {
-  const { title, image_url, publisher } = item;
+  console.log(item);
+  const { title, image } = item;
   const dispatch = useDispatch();
 
   const recipeClickHandler = () => {
@@ -30,15 +31,14 @@ function SearchResultItem({ item, idx, currentIndex }) {
       className="search-result-item"
       tabIndex={-1}
       data-index={idx}
-      title={`${title} by ${publisher}`}
-      aria-label={`${title} by ${publisher}`}
+      title={title}
+      aria-label={title}
       onClick={recipeClickHandler}
       onKeyDown={handleKeyDown}
     >
-      <img src={image_url} alt={title} className="recipe-preview-image" />
+      <img src={image} alt={title} className="recipe-preview-image" />
       <div className="recipe-preview-info">
         <h2 className="recipe-preview-title">{title}</h2>
-        <p className="recipe-preview-publisher">{publisher}</p>
       </div>
     </li>
   );

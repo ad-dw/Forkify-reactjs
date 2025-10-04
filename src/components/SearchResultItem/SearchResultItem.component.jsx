@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { searchResultsAsync } from "../../redux/searchResults/searchResults.slice";
 
 function SearchResultItem({ item, idx, currentIndex }) {
-  console.log(item);
   const { title, image } = item;
   const dispatch = useDispatch();
 

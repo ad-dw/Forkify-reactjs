@@ -29,15 +29,6 @@ const SearchResults = ({ results, loading, error }) => {
   useEffect(() => {
     const searchResultsList = document.querySelector("#" + searchResultsListID);
     if (!searchResultsList) return;
-    searchResultsList.addEventListener("keydown", keyboardNavigation);
-    return () => {
-      searchResultsList.removeEventListener("keydown", keyboardNavigation);
-    };
-  }, []);
-
-  useEffect(() => {
-    const searchResultsList = document.querySelector("#" + searchResultsListID);
-    if (!searchResultsList) return;
     const nextItem = searchResultsList.querySelector(
       `[data-index="${currentIndex}"]`
     );
@@ -69,22 +60,24 @@ const SearchResults = ({ results, loading, error }) => {
       return results.length === 0 ? (
         <p className="state-container">No results found.</p>
       ) : (
-        <div id={searchResultsListID}>
-          <ul className="search-results-list">
-            {results.map((item, idx) => (
-              <SearchResultItem
-                key={idx}
-                item={item}
-                idx={idx}
-                currentIndex={currentIndex}
-              />
-            ))}
-          </ul>
-        </div>
+        <ul className="search-results-list">
+          {results.map((item, idx) => (
+            <SearchResultItem
+              key={idx}
+              item={item}
+              idx={idx}
+              currentIndex={currentIndex}
+            />
+          ))}
+        </ul>
       );
     }
   };
-  return renderableComponent();
+  return (
+    <div id={searchResultsListID} onKeyDown={keyboardNavigation}>
+      {renderableComponent()}
+    </div>
+  );
 };
 
 export default SearchResults;

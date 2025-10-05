@@ -2,19 +2,32 @@ import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
 import { CirclePlus, CircleMinus, Bookmark, Check, Clock3 } from "lucide-react";
 import Fraction from "fraction.js";
-
-const recipe = null;
+import { useSelector } from "react-redux";
+import { selectRecipeDetail } from "../../redux/recipeDetail/recipeDetail.selector";
 
 const RecipeDetail = () => {
+  const recipe = useSelector(selectRecipeDetail);
+  console.log(recipe?.summary);
+  const summary = recipe?.summary.replaceAll(
+    /<a /g,
+    '<a target="_blank" rel="noopener noreferrer" '
+  );
+
   return (
     <div className="recipe-detail-container">
       {recipe ? (
         <div className="recipe-detail">
           <h2 className="recipe-title">{recipe.title}</h2>
-          <img src={recipe.image_url} alt={recipe.title} />
+          <img src={recipe.image} alt={recipe.title} />
+          <div className="summary-container">
+            <p
+              dangerouslySetInnerHTML={{ __html: summary }}
+              className="summary"
+            />
+          </div>
           <div className="cooking-info">
             <p>
-              <Clock3 role="presentation" /> {recipe.cooking_time} minutes
+              <Clock3 role="presentation" /> {recipe.readyInMinutes} minutes
             </p>
             <div
               className="servings-control"
@@ -45,18 +58,20 @@ const RecipeDetail = () => {
               <Bookmark className="icon" role="presentation" />
             </button>
           </div>
-          <ul className="ingredients-list">
-            {recipe.ingredients &&
-              recipe.ingredients.map((ingredient, idx) => (
-                <li key={idx} className="ingredient-item">
-                  <Check size={24} className="icon" role="presentation" />
-                  <span className="ingredient-text">
-                    {new Fraction(ingredient.quantity).toFraction(true)}{" "}
-                    {ingredient.unit} {ingredient.description}
-                  </span>
-                </li>
-              ))}
-          </ul>
+          <div className="ingredients-section">
+            <h3>Ingredients</h3>
+            <ul className="ingredients-list">
+              {recipe.extendedIngredients &&
+                recipe.extendedIngredients.map((ingredient, idx) => (
+                  <li key={idx} className="ingredient-item">
+                    <Check size={24} className="icon" role="presentation" />
+                    <span className="ingredient-text">
+                      {` ${ingredient.measures.metric.amount} ${ingredient.measures.metric.unitShort} ${ingredient.name}`}
+                    </span>
+                  </li>
+                ))}
+            </ul>
+          </div>
           <div className="directions">
             <h3>How to cook it</h3>
             <p>

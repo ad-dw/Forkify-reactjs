@@ -9,8 +9,8 @@ const INITIAL_STATE = {
 
 export const fetchRecipeAsync = createAsyncThunk(
   "recipeDetail/fetchRecipeDetail",
-  async (recipeId) => {
-    const response = await searchRecipeDetails(recipeId);
+  async (recipe) => {
+    const response = await searchRecipeDetails(recipe.id);
     return response;
   }
 );

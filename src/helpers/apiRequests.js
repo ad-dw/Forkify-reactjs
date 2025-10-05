@@ -17,7 +17,12 @@ export const searchRecipe = async (keyword) => {
 
 export const searchRecipeDetails = async (id) => {
   try {
-    const response = await Axios.get(`/${id}`);
+    const params = {
+      apiKey: import.meta.env.VITE_API_KEY,
+    };
+    const response = await Axios.get(`/${id}/information`, {
+      params,
+    });
     return response.data;
   } catch (error) {
     notifyError("Error fetching recipe details:", error.message);

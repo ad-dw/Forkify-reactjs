@@ -142,3 +142,11 @@
 .summary a {
   text-decoration: underline;
 }
+
+.direction-step {
+  text-align: justify;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  display: flex;
+  gap: 1rem;
+}

@@ -74,10 +74,14 @@ const RecipeDetail = () => {
           </div>
           <div className="directions">
             <h3>How to cook it</h3>
-            <p>
-              This recipe was carefully designed and tested by{" "}
-              {recipe.publisher}. Please check out directions at their website.
-            </p>
+            <ul className="directions-list">
+              {recipe.analyzedInstructions[0]["steps"].map((stage) => (
+                <li key={stage.number} className="direction-step">
+                  <span>{stage.number}.</span>
+                  <span>{stage.step}</span>
+                </li>
+              ))}
+            </ul>
             <a
               className="directions-link"
               href={recipe.source_url}

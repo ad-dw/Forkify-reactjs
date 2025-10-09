@@ -60,6 +60,14 @@ function NavigationBar() {
               Contact
             </Link>
           </div>
+          <button
+            id="bookmarks"
+            title="Bookmarks"
+            type="button"
+            aria-haspopup="menu"
+          >
+            Bookmarks
+          </button>
         </div>
       )}
     </nav>

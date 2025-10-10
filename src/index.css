@@ -20,6 +20,7 @@ button {
   border: none;
   font-size: inherit;
   font-weight: inherit;
+  cursor: pointer;
 }
 
 .custom-toast {

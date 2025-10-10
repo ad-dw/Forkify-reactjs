@@ -1,7 +1,8 @@
 .navigation-bar {
   display: flex;
   align-items: center;
-  height: 5srem;
+  height: 5rem;
+  position: relative;
   justify-content: space-between;
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.025);

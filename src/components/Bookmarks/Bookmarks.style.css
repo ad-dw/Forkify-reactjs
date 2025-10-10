@@ -1,0 +1,23 @@
+.bookmarks {
+  width: min(100%, 30rem);
+  min-height: 30rem;
+  background-color: #cfad85;
+  position: absolute;
+  top: 6.5rem;
+  right: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  z-index: 10;
+}
+
+.bookmarks__title {
+  margin: 1.5rem;
+}
+
+.bookmarks__empty {
+  margin-top: 5rem;
+}
+
+.bookmarks__empty p {
+  font-size: 1.5rem;
+}

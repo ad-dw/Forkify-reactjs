@@ -3,11 +3,10 @@ import "./SearchResults.styles.css";
 import SearchResultItem from "../SearchResultItem/SearchResultItem.component";
 import Spinner from "../Spinner/Spinner.component";
 
-const searchResultsListID = "search-results-panel";
-
-const SearchResults = ({ results, loading, error }) => {
+const SearchResults = ({ results, loading, error, id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
+  const searchResultsListID = id || "search-results-panel";
 
   const keyboardNavigation = (e) => {
     if (e.key === "ArrowDown") {

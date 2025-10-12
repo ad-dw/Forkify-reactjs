@@ -1,13 +1,17 @@
 import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
 import { CirclePlus, CircleMinus, Bookmark, Check, Clock3 } from "lucide-react";
-import Fraction from "fraction.js";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectRecipeDetail } from "../../redux/recipeDetail/recipeDetail.selector";
 
 const RecipeDetail = () => {
   const recipe = useSelector(selectRecipeDetail);
-  console.log(recipe?.summary);
+  const [bookmarked, setBookmarked] = useState(false);
+
+  const handleBookmarkRecipe = () => {
+    setBookmarked(!bookmarked);
+  };
   const summary = recipe?.summary.replaceAll(
     /<a /g,
     '<a target="_blank" rel="noopener noreferrer" '
@@ -52,10 +56,17 @@ const RecipeDetail = () => {
             </div>
             <button
               aria-label="Bookmark this recipe"
-              title="Bookmark this recipe"
+              title={
+                bookmarked ? "Unbookmark this recipe" : "Bookmark this recipe"
+              }
               className="bookmark-button rd-btn"
+              onClick={handleBookmarkRecipe}
             >
-              <Bookmark className="icon" role="presentation" />
+              <Bookmark
+                className="icon"
+                role="presentation"
+                fill={bookmarked ? "black" : "none"}
+              />
             </button>
           </div>
           <div className="ingredients-section">

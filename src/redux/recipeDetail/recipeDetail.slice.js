@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { searchRecipeDetails } from "../../helpers/apiRequests";
+import {
+  isRecipeBookmarked,
+  removeItemFromLocalStorage,
+  setItemToLocalStorage,
+} from "../../helpers/localstorage";
 
 const INITIAL_STATE = {
   loading: false,
@@ -11,6 +16,7 @@ export const fetchRecipeAsync = createAsyncThunk(
   "recipeDetail/fetchRecipeDetail",
   async (recipe) => {
     const response = await searchRecipeDetails(recipe.id);
+    response.bookmarked = isRecipeBookmarked(response);
     return response;
   }
 );
@@ -18,6 +24,16 @@ export const fetchRecipeAsync = createAsyncThunk(
 const recipeDetailSlice = createSlice({
   name: "recipeDetail",
   initialState: INITIAL_STATE,
+  reducers: {
+    addBookmark(state) {
+      state.recipe.bookmarked = true;
+      setItemToLocalStorage("bookmarkedRecipes", state.recipe);
+    },
+    removeBookmark(state) {
+      state.recipe.bookmarked = false;
+      removeItemFromLocalStorage("bookmarkedRecipes", state.recipe.id);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchRecipeAsync.pending, (state) => {
@@ -38,3 +54,5 @@ const recipeDetailSlice = createSlice({
 });
 
 export const recipeDetail = recipeDetailSlice.reducer;
+
+export const { addBookmark, removeBookmark } = recipeDetailSlice.actions;

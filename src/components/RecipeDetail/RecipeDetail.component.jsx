@@ -2,16 +2,25 @@ import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
 import { CirclePlus, CircleMinus, Bookmark, Check, Clock3 } from "lucide-react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRecipeDetail } from "../../redux/recipeDetail/recipeDetail.selector";
+import {
+  addBookmark,
+  removeBookmark,
+} from "../../redux/recipeDetail/recipeDetail.slice";
 
 const RecipeDetail = () => {
   const recipe = useSelector(selectRecipeDetail);
-  const [bookmarked, setBookmarked] = useState(false);
+  const dispatch = useDispatch();
 
   const handleBookmarkRecipe = () => {
-    setBookmarked(!bookmarked);
+    if (!recipe.bookmarked) {
+      dispatch(addBookmark(recipe));
+    } else {
+      dispatch(removeBookmark(recipe.id));
+    }
   };
+
   const summary = recipe?.summary.replaceAll(
     /<a /g,
     '<a target="_blank" rel="noopener noreferrer" '
@@ -57,7 +66,9 @@ const RecipeDetail = () => {
             <button
               aria-label="Bookmark this recipe"
               title={
-                bookmarked ? "Unbookmark this recipe" : "Bookmark this recipe"
+                recipe.bookmarked
+                  ? "Unbookmark this recipe"
+                  : "Bookmark this recipe"
               }
               className="bookmark-button rd-btn"
               onClick={handleBookmarkRecipe}
@@ -65,7 +76,7 @@ const RecipeDetail = () => {
               <Bookmark
                 className="icon"
                 role="presentation"
-                fill={bookmarked ? "black" : "none"}
+                fill={recipe.bookmarked ? "black" : "none"}
               />
             </button>
           </div>
@@ -86,7 +97,7 @@ const RecipeDetail = () => {
           <div className="directions">
             <h3>How to cook it</h3>
             <ul className="directions-list">
-              {recipe.analyzedInstructions[0]["steps"].map((stage) => (
+              {recipe?.analyzedInstructions[0]["steps"].map((stage) => (
                 <li key={stage.number} className="direction-step">
                   <span>{stage.number}.</span>
                   <span>{stage.step}</span>

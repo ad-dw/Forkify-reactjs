@@ -1,7 +1,6 @@
 export const isRecipeBookmarked = (recipe) => {
-  const bookmarkedRecipes = JSON.parse(
-    localStorage.getItem("bookmarkedRecipes")
-  );
+  const bookmarkedRecipes =
+    JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
   return bookmarkedRecipes.some((item) => item.id === recipe.id);
 };
 
@@ -11,6 +10,10 @@ export const setItemToLocalStorage = (key, value) => {
     key,
     JSON.stringify([bookmarkedItems, value].flat().filter(Boolean))
   );
+};
+
+export const getItemFromLocalStorage = (key) => {
+  return JSON.parse(localStorage.getItem(key)) || [];
 };
 
 export const removeItemFromLocalStorage = (key, id) => {

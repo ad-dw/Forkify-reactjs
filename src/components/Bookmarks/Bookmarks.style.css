@@ -1,15 +1,10 @@
 .bookmarks {
-  width: min(100%, 30rem);
-  height: 30rem;
+  width: inherit;
+  height: inherit;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgb(114, 114, 114) #cfad85;
-  background-color: #cfad85;
-  position: absolute;
-  top: 6.5rem;
-  right: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  position: inherit;
   z-index: 10;
 }
 

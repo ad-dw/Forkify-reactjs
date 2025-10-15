@@ -1,9 +1,11 @@
 import "./NavigationBar.styles.css";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Utensils, Menu } from "lucide-react";
 import SearchBar from "../Search/SearchBar.component";
-import Bookmarks from "../Bookmarks/Bookmarks.component";
+import Spinner from "../Spinner/Spinner.component";
+
+const Bookmarks = lazy(() => import("../Bookmarks/Bookmarks.component"));
 
 function NavigationBar() {
   const smallScreen = window.matchMedia("(width <= 768px)").matches;
@@ -79,7 +81,13 @@ function NavigationBar() {
           </div>
         )}
       </nav>
-      {bookmarksOpen && <Bookmarks />}
+      {bookmarksOpen && (
+        <div className="bookmarks-container">
+          <Suspense fallback={<Spinner />}>
+            <Bookmarks />
+          </Suspense>
+        </div>
+      )}
     </>
   );
 }

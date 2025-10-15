@@ -1,7 +1,6 @@
 import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
 import { CirclePlus, CircleMinus, Bookmark, Check, Clock3 } from "lucide-react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecipeDetail } from "../../redux/recipeDetail/recipeDetail.selector";
 import {

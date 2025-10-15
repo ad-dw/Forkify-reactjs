@@ -2,16 +2,26 @@ import { Axios } from "../configuration/axios";
 import { notifyError } from "./notify";
 
 export const searchRecipe = async (keyword) => {
+  let ongoingSearch = false;
+  const controller = new AbortController();
+  if (ongoingSearch) {
+    controller.abort();
+    ongoingSearch = false;
+  }
   const params = {
     apiKey: import.meta.env.VITE_API_KEY,
     titleMatch: keyword,
+    signal: controller.signal,
   };
   try {
+    ongoingSearch = true;
     const response = await Axios.get("/complexSearch", { params });
     return response.data.results;
   } catch (error) {
     notifyError("Error searching recipe:", error.message);
     throw error;
+  } finally {
+    ongoingSearch = false;
   }
 };
 

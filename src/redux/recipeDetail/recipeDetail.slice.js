@@ -40,6 +40,7 @@ const recipeDetailSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchRecipeAsync.fulfilled, (state, action) => {
+        debugger;
         state.loading = false;
         state.recipe = action.payload;
       })

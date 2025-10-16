@@ -2,14 +2,21 @@ import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
 import { CirclePlus, CircleMinus, Bookmark, Check, Clock3 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectRecipeDetail } from "../../redux/recipeDetail/recipeDetail.selector";
+import {
+  selectIsRecipeError,
+  selectIsRecipeLoading,
+  selectRecipeDetail,
+} from "../../redux/recipeDetail/recipeDetail.selector";
 import {
   addBookmark,
   removeBookmark,
 } from "../../redux/recipeDetail/recipeDetail.slice";
+import Spinner from "../Spinner/Spinner.component";
 
 const RecipeDetail = () => {
   const recipe = useSelector(selectRecipeDetail);
+  const loading = useSelector(selectIsRecipeLoading);
+  const error = useSelector(selectIsRecipeError);
   const dispatch = useDispatch();
 
   const handleBookmarkRecipe = () => {
@@ -25,9 +32,18 @@ const RecipeDetail = () => {
     '<a target="_blank" rel="noopener noreferrer" '
   );
 
-  return (
-    <div className="recipe-detail-container">
-      {recipe ? (
+  const renderableComponent = () => {
+    if (loading) {
+      return <Spinner />;
+    } else if (error) {
+      return (
+        <div className="error-message" role="alert">
+          An error occurred while fetching the recipe details. Please try again
+          later.
+        </div>
+      );
+    } else if (recipe) {
+      return (
         <div className="recipe-detail">
           <h2 className="recipe-title">{recipe.title}</h2>
           <img src={recipe.image} alt={recipe.title} />
@@ -115,7 +131,9 @@ const RecipeDetail = () => {
             </a>
           </div>
         </div>
-      ) : (
+      );
+    } else {
+      return (
         <div
           className="empty-recipe-detail"
           tabIndex={0}
@@ -125,9 +143,11 @@ const RecipeDetail = () => {
           <Pointer size={180} strokeWidth={0.5} role="presentation" />
           <p>Please select a recipe to see the details.</p>
         </div>
-      )}
-    </div>
-  );
+      );
+    }
+  };
+
+  return <div className="recipe-detail-container">{renderableComponent()}</div>;
 };
 
 export default RecipeDetail;

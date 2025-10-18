@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./SearchResults.styles.css";
 import SearchResultItem from "../SearchResultItem/SearchResultItem.component";
 import Spinner from "../Spinner/Spinner.component";
+import Pagination from "../Pagination/Pagination.component";
 
 const SearchResults = ({ results, loading, error, id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,16 +60,19 @@ const SearchResults = ({ results, loading, error, id }) => {
       return results.length === 0 ? (
         <p className="state-container">No results found.</p>
       ) : (
-        <ul className="search-results-list">
-          {results.map((item, idx) => (
-            <SearchResultItem
-              key={idx}
-              item={item}
-              idx={idx}
-              currentIndex={currentIndex}
-            />
-          ))}
-        </ul>
+        <>
+          <ul className="search-results-list">
+            {results.map((item, idx) => (
+              <SearchResultItem
+                key={idx}
+                item={item}
+                idx={idx}
+                currentIndex={currentIndex}
+              />
+            ))}
+          </ul>
+          <Pagination />
+        </>
       );
     }
   };

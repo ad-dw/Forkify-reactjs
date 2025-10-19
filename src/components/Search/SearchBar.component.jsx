@@ -1,5 +1,8 @@
 import "./SearchBar.styles.css";
-import { searchResultsAsync } from "../../redux/searchResults/searchResults.slice";
+import {
+  searchResultsAsync,
+  updateSearchTerm,
+} from "../../redux/searchResults/searchResults.slice";
 import { debounce } from "../../helpers/debounce";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -12,11 +15,12 @@ const SearchBar = () => {
     const value = event.target.value;
     if (value.length < 3) return;
     setSearchTerm(value);
+    dispatch(updateSearchTerm(value));
   }, 500);
 
   useEffect(() => {
     if (!searchTerm || searchTerm.length < 3) return;
-    dispatch(searchResultsAsync(searchTerm));
+    dispatch(searchResultsAsync({ searchTerm, offset: 0 }));
   }, [searchTerm]);
 
   return (

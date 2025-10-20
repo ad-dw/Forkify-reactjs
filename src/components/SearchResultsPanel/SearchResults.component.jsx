@@ -61,7 +61,7 @@ const SearchResults = ({ results, loading, error, id }) => {
         <p className="state-container">No results found.</p>
       ) : (
         <>
-          <ul className="search-results-list">
+          <ul className="search-results-list" aria-label="search results">
             {results.map((item, idx) => (
               <SearchResultItem
                 key={idx}

@@ -5,4 +5,13 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  test: {
+    globals: true, // use global test APIs (describe, it, expect)
+    environment: "jsdom", // browser-like environment
+    setupFiles: "src/tests/setup.js",
+    coverage: {
+      provider: "c8", // or 'istanbul'
+      reporter: ["text", "lcov"],
+    },
+  },
 });

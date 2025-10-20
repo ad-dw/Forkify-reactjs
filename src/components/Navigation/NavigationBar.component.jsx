@@ -8,7 +8,7 @@ import Spinner from "../Spinner/Spinner.component";
 const Bookmarks = lazy(() => import("../Bookmarks/Bookmarks.component"));
 
 function NavigationBar() {
-  const smallScreen = window.matchMedia("(width <= 768px)").matches;
+  const smallScreen = window.matchMedia?.("(width <= 768px)").matches;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [bookmarksOpen, setBookmarksOpen] = useState(false);
 

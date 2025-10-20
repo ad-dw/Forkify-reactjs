@@ -27,7 +27,7 @@ const RecipeDetail = () => {
     }
   };
 
-  const summary = recipe?.summary.replaceAll(
+  const summary = recipe?.summary?.replaceAll(
     /<a /g,
     '<a target="_blank" rel="noopener noreferrer" '
   );
@@ -44,7 +44,7 @@ const RecipeDetail = () => {
       );
     } else if (recipe) {
       return (
-        <div className="recipe-detail">
+        <div className="recipe-detail" role="region" aria-label="recipe detail">
           <h2 className="recipe-title">{recipe.title}</h2>
           <img src={recipe.image} alt={recipe.title} />
           <div className="summary-container">

@@ -10,8 +10,8 @@ export default defineConfig({
     environment: "jsdom", // browser-like environment
     setupFiles: "src/tests/setup.js",
     coverage: {
-      provider: "c8", // or 'istanbul'
-      reporter: ["text", "lcov"],
+      provider: "v8",
+      reporter: ["text"],
     },
   },
 });

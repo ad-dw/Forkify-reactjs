@@ -16,14 +16,14 @@ export default function Bookmarks() {
           <p>No bookmarks yet.</p>
         </div>
       ) : (
-        <ul className="bookmarks__list">
-          <SearchResults
-            results={items}
-            loading={false}
-            error={null}
-            id="bookmarks-list"
-          />
-        </ul>
+        <SearchResults
+          results={items}
+          loading={false}
+          error={null}
+          id="bookmarks-list"
+          role="menu"
+          itemRole="menuitem"
+        />
       )}
     </aside>
   );

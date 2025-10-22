@@ -3,7 +3,7 @@ import "./SearchResultItem.styles.css";
 import { useDispatch } from "react-redux";
 import { fetchRecipeAsync } from "../../redux/recipeDetail/recipeDetail.slice";
 
-function SearchResultItem({ item, idx, currentIndex }) {
+function SearchResultItem({ item, idx, currentIndex, role }) {
   const { title, image } = item;
   const dispatch = useDispatch();
 
@@ -34,6 +34,7 @@ function SearchResultItem({ item, idx, currentIndex }) {
       aria-label={title}
       onClick={recipeClickHandler}
       onKeyDown={handleKeyDown}
+      role={role}
     >
       <img src={image} alt={title} className="recipe-preview-image" />
       <div className="recipe-preview-info">

@@ -5,7 +5,6 @@
   scrollbar-width: thin;
   scrollbar-color: rgb(114, 114, 114) #cfad85;
   position: inherit;
-  z-index: 10;
 }
 
 .bookmarks__title {

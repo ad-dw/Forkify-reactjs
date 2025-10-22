@@ -4,7 +4,14 @@ import SearchResultItem from "../SearchResultItem/SearchResultItem.component";
 import Spinner from "../Spinner/Spinner.component";
 import Pagination from "../Pagination/Pagination.component";
 
-const SearchResults = ({ results, loading, error, id }) => {
+const SearchResults = ({
+  results,
+  loading,
+  error,
+  id,
+  role = "list",
+  itemRole = "listitem",
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
   const searchResultsListID = id || "search-results-panel";
@@ -61,13 +68,18 @@ const SearchResults = ({ results, loading, error, id }) => {
         <p className="state-container">No results found.</p>
       ) : (
         <>
-          <ul className="search-results-list" aria-label="search results">
+          <ul
+            className="search-results-list"
+            aria-label="search results"
+            role={role}
+          >
             {results.map((item, idx) => (
               <SearchResultItem
                 key={idx}
                 item={item}
                 idx={idx}
                 currentIndex={currentIndex}
+                role={itemRole}
               />
             ))}
           </ul>

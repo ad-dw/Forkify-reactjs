@@ -38,7 +38,7 @@ function NavigationBar() {
 
   return (
     <>
-      <nav className="navigation-bar">
+      <nav className="navigation-bar" aria-label="global-navigation">
         <Link to="/" aria-label="Home" className="nav-logo" title="Home">
           <Utensils size={28} className="icon" />
           <span>Forkify</span>

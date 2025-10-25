@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   loading: false,
   results: [],
   searchTerm: "",
+  totalResults: 0,
   pages: 1,
   offset: 0,
   error: null,
@@ -40,6 +41,7 @@ const searchResultSlice = createSlice({
         );
         state.offset = state.offset + action.payload.results.length;
         state.results = action.payload.results;
+        state.totalResults = action.payload.totalResults;
       })
       .addCase(searchResultsAsync.rejected, (state, action) => {
         state.loading = false;

@@ -8,7 +8,7 @@ import { recipeDetail } from "../redux/recipeDetail/recipeDetail.slice";
 export function renderWithProviders(
   ui,
   {
-    preloadedState = { counter: { value: 0 } },
+    preloadedState = { searchResults: [], recipeDetail: {} },
     store = configureStore({
       reducer: combineReducers({ searchResults, recipeDetail }),
       preloadedState,

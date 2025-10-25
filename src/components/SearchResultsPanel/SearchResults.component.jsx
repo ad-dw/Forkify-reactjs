@@ -3,6 +3,8 @@ import "./SearchResults.styles.css";
 import SearchResultItem from "../SearchResultItem/SearchResultItem.component";
 import Spinner from "../Spinner/Spinner.component";
 import Pagination from "../Pagination/Pagination.component";
+import { useSelector } from "react-redux";
+import { selectSearchTotalResults } from "../../redux/searchResults/searchResults.selector";
 
 const SearchResults = ({
   results,
@@ -15,6 +17,7 @@ const SearchResults = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
   const searchResultsListID = id || "search-results-panel";
+  const totalResults = useSelector(selectSearchTotalResults);
 
   const keyboardNavigation = (e) => {
     if (e.key === "ArrowDown") {
@@ -83,7 +86,7 @@ const SearchResults = ({
               />
             ))}
           </ul>
-          <Pagination />
+          {totalResults > 10 && <Pagination />}
         </>
       );
     }

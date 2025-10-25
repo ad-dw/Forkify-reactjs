@@ -38,7 +38,9 @@ describe("rendering App component", () => {
       },
     };
     renderWithProviders(<App />, { preloadedState });
-    const navigationBar = screen.getByRole("navigation");
+    const navigationBar = screen.getByRole("navigation", {
+      name: /global-navigation/i,
+    });
     expect(navigationBar).toBeInTheDocument();
     const recipeView = screen.getByRole("region", { name: /recipe view/i });
     const recipeList = within(recipeView).getByRole("list", {
@@ -111,7 +113,9 @@ describe("rendering App component", () => {
         },
       };
       renderWithProviders(<App />, { preloadedState });
-      const navigationBar = screen.getByRole("navigation");
+      const navigationBar = screen.getByRole("navigation", {
+        name: /global-navigation/i,
+      });
       expect(navigationBar).toBeInTheDocument();
       const recipeDetail = screen.getByRole("region", {
         name: /recipe detail/i,

@@ -13,7 +13,6 @@ const Pagination = () => {
   const offset = useSelector(selectSearchOffset);
   const searchTerm = useSelector(selectSearchTerm);
   const dispatch = useDispatch();
-  console.log(offset);
 
   const handleGoToPreviousPage = () => {
     if (offset > 0) {
@@ -24,13 +23,18 @@ const Pagination = () => {
     dispatch(searchResultsAsync({ searchTerm, offset: offset + 10 }));
   };
   return (
-    <div className="pagination-container">
+    <div
+      className="pagination-container"
+      role="navigation"
+      aria-label="pagination navigation"
+    >
       <button
         className="pagination-button"
         aria-label="go to previous page"
         title="go to previous page"
         onClick={handleGoToPreviousPage}
         disabled={offset < 10}
+        role="link"
       >
         <ArrowLeft />
       </button>
@@ -42,6 +46,7 @@ const Pagination = () => {
         aria-label="go to next page"
         title="go to next page"
         onClick={handleGoToNextPage}
+        role="link"
       >
         <ArrowRight />
       </button>

@@ -82,7 +82,11 @@ function NavigationBar() {
         )}
       </nav>
       {bookmarksOpen && (
-        <div className="bookmarks-container">
+        <div
+          className="bookmarks-container"
+          role="region"
+          aria-label="bookmarks"
+        >
           <Suspense fallback={<Spinner />}>
             <Bookmarks />
           </Suspense>

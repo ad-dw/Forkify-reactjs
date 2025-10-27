@@ -7,7 +7,7 @@ import { debounce } from "../../helpers/debounce";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-const SearchBar = () => {
+const SearchBar = ({ role }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const SearchBar = () => {
   }, [searchTerm]);
 
   return (
-    <div className="search-bar">
+    <div className="search-bar" role={role}>
       <input
         type="text"
         placeholder="Search 1,000,000+ recipes"

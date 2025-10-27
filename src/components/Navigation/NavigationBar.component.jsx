@@ -59,13 +59,24 @@ function NavigationBar() {
             id="nav-menu"
             className={`nav-menu ${smallScreen ? "small-screen-menu" : ""}`}
             onKeyDown={handleKeyDown}
+            role={smallScreen ? "menu" : undefined}
           >
-            <SearchBar />
-            <div className="nav-links">
-              <Link to="/about" title="About" aria-label="About forkify">
+            <SearchBar role={smallScreen ? "menuitem" : undefined} />
+            <div className="nav-links" role={smallScreen ? "group" : undefined}>
+              <Link
+                to="/about"
+                title="About"
+                aria-label="About forkify"
+                role={smallScreen ? "menuitem" : "link"}
+              >
                 About
               </Link>
-              <Link to="/contact" title="Contact" aria-label="Contact forkify">
+              <Link
+                to="/contact"
+                title="Contact"
+                aria-label="Contact forkify"
+                role={smallScreen ? "menuitem" : "link"}
+              >
                 Contact
               </Link>
             </div>
@@ -75,6 +86,7 @@ function NavigationBar() {
               type="button"
               aria-haspopup="menu"
               onClick={handleBookmarksOpen}
+              role={smallScreen ? "menuitem" : "button"}
             >
               Bookmarks
             </button>

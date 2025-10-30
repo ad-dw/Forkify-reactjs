@@ -8,6 +8,8 @@
   padding: 0;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(114, 114, 114) #cfad85;
 }
 
 *:focus {

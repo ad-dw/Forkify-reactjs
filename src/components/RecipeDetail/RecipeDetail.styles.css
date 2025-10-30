@@ -48,6 +48,13 @@
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
+.recipe-time {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
 .servings-control {
   display: flex;
   gap: 0.8rem;
@@ -153,4 +160,15 @@
   padding: 0 1rem;
   display: flex;
   gap: 1rem;
+}
+
+.small-screen-recipe-container {
+  width: 90vw;
+  height: 90vh;
+  border-radius: 0.5rem;
+  position: fixed;
+  top: 1.25rem;
+  left: 1.35rem;
+  background-color: #cfad85;
+  overflow-y: auto;
 }

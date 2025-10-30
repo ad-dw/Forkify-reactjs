@@ -1,6 +1,13 @@
 import "./RecipeDetail.styles.css";
 import { Pointer } from "lucide-react";
-import { CirclePlus, CircleMinus, Bookmark, Check, Clock3 } from "lucide-react";
+import {
+  CirclePlus,
+  CircleMinus,
+  Bookmark,
+  Check,
+  Clock3,
+  X,
+} from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsRecipeError,
@@ -12,12 +19,15 @@ import {
   removeBookmark,
 } from "../../redux/recipeDetail/recipeDetail.slice";
 import Spinner from "../Spinner/Spinner.component";
+import { useState } from "react";
 
 const RecipeDetail = () => {
   const recipe = useSelector(selectRecipeDetail);
   const loading = useSelector(selectIsRecipeLoading);
   const error = useSelector(selectIsRecipeError);
   const dispatch = useDispatch();
+  const smallScreen = window.matchMedia?.("(max-width: 768px)").matches;
+  const [recipeVisible, setRecipeVisible] = useState(!smallScreen);
 
   const handleBookmarkRecipe = () => {
     if (!recipe.bookmarked) {
@@ -54,7 +64,7 @@ const RecipeDetail = () => {
             />
           </div>
           <div className="cooking-info">
-            <p>
+            <p className="recipe-time">
               <Clock3 role="presentation" /> {recipe.readyInMinutes} minutes
             </p>
             <div
@@ -133,7 +143,7 @@ const RecipeDetail = () => {
         </div>
       );
     } else {
-      return (
+      return smallScreen ? null : (
         <div
           className="empty-recipe-detail"
           tabIndex={0}
@@ -147,7 +157,22 @@ const RecipeDetail = () => {
     }
   };
 
-  return <div className="recipe-detail-container">{renderableComponent()}</div>;
+  return (
+    <div
+      className={` ${
+        smallScreen
+          ? "small-screen-recipe-container"
+          : "recipe-detail-container"
+      }`}
+    >
+      {smallScreen && (
+        <button>
+          <X />
+        </button>
+      )}
+      {renderableComponent()}
+    </div>
+  );
 };
 
 export default RecipeDetail;

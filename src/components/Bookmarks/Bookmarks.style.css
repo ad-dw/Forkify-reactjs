@@ -2,8 +2,6 @@
   width: inherit;
   height: inherit;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgb(114, 114, 114) #cfad85;
   position: inherit;
 }
 

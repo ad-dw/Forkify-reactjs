@@ -164,6 +164,7 @@ const RecipeDetail = () => {
           ? "small-screen-recipe-container"
           : "recipe-detail-container"
       }`}
+      tabIndex={0}
     >
       {smallScreen && (
         <button>

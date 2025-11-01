@@ -158,21 +158,23 @@ const RecipeDetail = () => {
   };
 
   return (
-    <div
-      className={` ${
-        smallScreen
-          ? "small-screen-recipe-container"
-          : "recipe-detail-container"
-      }`}
-      tabIndex={0}
-    >
-      {smallScreen && (
-        <button>
-          <X />
-        </button>
-      )}
-      {renderableComponent()}
-    </div>
+    recipeVisible && (
+      <div
+        className={` ${
+          smallScreen
+            ? "small-screen-recipe-container"
+            : "recipe-detail-container"
+        }`}
+        tabIndex={0}
+      >
+        {smallScreen && (
+          <button>
+            <X />
+          </button>
+        )}
+        {renderableComponent()}
+      </div>
+    )
   );
 };
 

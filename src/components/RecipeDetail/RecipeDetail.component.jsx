@@ -146,7 +146,6 @@ const RecipeDetail = () => {
       return smallScreen ? null : (
         <div
           className="empty-recipe-detail"
-          tabIndex={0}
           role="region"
           aria-label="No recipe selected"
         >

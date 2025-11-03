@@ -13,21 +13,22 @@ import {
   selectIsRecipeError,
   selectIsRecipeLoading,
   selectRecipeDetail,
+  selectIsRecipeVisible,
 } from "../../redux/recipeDetail/recipeDetail.selector";
 import {
   addBookmark,
   removeBookmark,
+  setRecipeDetailVisible,
 } from "../../redux/recipeDetail/recipeDetail.slice";
 import Spinner from "../Spinner/Spinner.component";
-import { useState } from "react";
 
 const RecipeDetail = () => {
   const recipe = useSelector(selectRecipeDetail);
   const loading = useSelector(selectIsRecipeLoading);
   const error = useSelector(selectIsRecipeError);
   const dispatch = useDispatch();
-  const smallScreen = window.matchMedia?.("(max-width: 768px)").matches;
-  const [recipeVisible, setRecipeVisible] = useState(!smallScreen);
+  const recipeVisible = useSelector(selectIsRecipeVisible);
+  const smallScreen = window.matchMedia?.("(width <= 768px)").matches;
 
   const handleBookmarkRecipe = () => {
     if (!recipe.bookmarked) {
@@ -35,6 +36,11 @@ const RecipeDetail = () => {
     } else {
       dispatch(removeBookmark(recipe.id));
     }
+  };
+
+  const handleClosePopup = (e) => {
+    e.preventDefault();
+    dispatch(setRecipeDetailVisible(false));
   };
 
   const summary = recipe?.summary?.replaceAll(
@@ -143,7 +149,7 @@ const RecipeDetail = () => {
         </div>
       );
     } else {
-      return smallScreen ? null : (
+      return !recipeVisible ? null : (
         <div
           className="empty-recipe-detail"
           role="region"
@@ -167,8 +173,13 @@ const RecipeDetail = () => {
         tabIndex={0}
       >
         {smallScreen && (
-          <button>
-            <X />
+          <button
+            className="close-recipe-modal rd-btn"
+            aria-label="Close recipe detail"
+            title="Close recipe detail"
+            onClick={handleClosePopup}
+          >
+            <X size={24} className="icon" />
           </button>
         )}
         {renderableComponent()}

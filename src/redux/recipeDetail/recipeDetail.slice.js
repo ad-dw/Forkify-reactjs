@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   loading: false,
   recipe: null,
   error: null,
+  visible: !window.matchMedia?.("(width <= 768px)").matches,
 };
 
 export const fetchRecipeAsync = createAsyncThunk(
@@ -33,10 +34,14 @@ const recipeDetailSlice = createSlice({
       state.recipe.bookmarked = false;
       removeItemFromLocalStorage("bookmarkedRecipes", state.recipe.id);
     },
+    setRecipeDetailVisible(state, action) {
+      state.visible = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchRecipeAsync.pending, (state) => {
+        state.visible = true;
         state.loading = true;
       })
       .addCase(fetchRecipeAsync.fulfilled, (state, action) => {
@@ -55,4 +60,5 @@ const recipeDetailSlice = createSlice({
 
 export const recipeDetail = recipeDetailSlice.reducer;
 
-export const { addBookmark, removeBookmark } = recipeDetailSlice.actions;
+export const { addBookmark, removeBookmark, setRecipeDetailVisible } =
+  recipeDetailSlice.actions;

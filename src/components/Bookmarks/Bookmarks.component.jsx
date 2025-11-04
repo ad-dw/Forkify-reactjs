@@ -1,14 +1,29 @@
 import SearchResults from "../SearchResultsPanel/SearchResults.component";
 import "./Bookmarks.style.css";
-import { BookmarkX } from "lucide-react";
+import { BookmarkX, X } from "lucide-react";
 import { getItemFromLocalStorage } from "../../helpers/localstorage";
 
-export default function Bookmarks() {
+export default function Bookmarks({ handleBookmarksClose }) {
   const items = getItemFromLocalStorage("bookmarkedRecipes");
+  const keyDownHandler = (e) => {
+    if (e.key === "Escape") {
+      handleBookmarksClose();
+    }
+  };
 
   return (
-    <aside className="bookmarks">
-      <h2 className="bookmarks__title">Bookmarks</h2>
+    <aside className="bookmarks" onKeyDown={keyDownHandler}>
+      <div className="bookmarks-header">
+        <h2 className="bookmarks__title">Bookmarks</h2>
+        <button
+          className="close-bookmarks-btn rd-btn"
+          aria-label="Close bookmarks"
+          title="Close bookmarks"
+          onClick={handleBookmarksClose}
+        >
+          <X size={24} className="icon" />
+        </button>
+      </div>
 
       {items.length === 0 ? (
         <div className="bookmarks__empty">

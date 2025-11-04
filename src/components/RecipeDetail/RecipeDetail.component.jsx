@@ -135,16 +135,6 @@ const RecipeDetail = () => {
                 </li>
               ))}
             </ul>
-            <a
-              className="directions-link"
-              href={recipe.source_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="directions to cook recipe"
-              aria-label="Directions to cook recipe"
-            >
-              Directions
-            </a>
           </div>
         </div>
       );

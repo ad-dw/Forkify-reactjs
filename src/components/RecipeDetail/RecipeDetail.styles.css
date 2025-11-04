@@ -93,16 +93,6 @@
   padding: 0.2rem;
 }
 
-.directions-link {
-  padding: 0.5rem 1rem;
-  margin: 1rem 0;
-  display: inline-block;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(to right, #e1b382, #2d545e) border-box;
-  border-radius: 50em;
-  border: 4px solid transparent;
-}
-
 .ingredients-section {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;

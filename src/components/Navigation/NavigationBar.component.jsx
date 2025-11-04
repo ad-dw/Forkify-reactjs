@@ -26,6 +26,8 @@ function NavigationBar() {
 
   const handleBookmarksOpen = () => {
     setBookmarksOpen((prev) => !prev);
+    const bookmarksButton = document.querySelector("#bookmarks");
+    bookmarksButton?.focus();
   };
 
   useEffect(() => {
@@ -100,7 +102,7 @@ function NavigationBar() {
           aria-label="bookmarks"
         >
           <Suspense fallback={<Spinner />}>
-            <Bookmarks />
+            <Bookmarks handleBookmarksClose={handleBookmarksOpen} />
           </Suspense>
         </div>
       )}

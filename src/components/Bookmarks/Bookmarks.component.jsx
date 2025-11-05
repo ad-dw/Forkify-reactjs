@@ -2,6 +2,7 @@ import SearchResults from "../SearchResultsPanel/SearchResults.component";
 import "./Bookmarks.style.css";
 import { BookmarkX, X } from "lucide-react";
 import { getItemFromLocalStorage } from "../../helpers/localstorage";
+import { useEffect } from "react";
 
 export default function Bookmarks({ handleBookmarksClose }) {
   const items = getItemFromLocalStorage("bookmarkedRecipes");
@@ -9,10 +10,32 @@ export default function Bookmarks({ handleBookmarksClose }) {
     if (e.key === "Escape") {
       handleBookmarksClose();
     }
+    if (e.key === "Tab" && e.shiftKey && e.target.id === "bookmarks-menu") {
+      e.preventDefault();
+    }
   };
 
+  useEffect(() => {
+    const bookmarksMenu = document.getElementById("bookmarks-menu");
+    const elements = bookmarksMenu?.querySelectorAll(
+      "a, button, input, [tabindex='0']"
+    );
+    const lastElement = elements[elements.length - 1];
+    lastElement?.addEventListener("keydown", (e) => {
+      if (e.key === "Tab" && !e.shiftKey) {
+        e.preventDefault();
+      }
+    });
+    bookmarksMenu?.focus();
+  }, []);
+
   return (
-    <aside className="bookmarks" onKeyDown={keyDownHandler}>
+    <aside
+      className="bookmarks"
+      onKeyDown={keyDownHandler}
+      tabIndex={0}
+      id="bookmarks-menu"
+    >
       <div className="bookmarks-header">
         <h2 className="bookmarks__title">Bookmarks</h2>
         <button

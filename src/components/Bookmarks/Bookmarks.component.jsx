@@ -35,6 +35,7 @@ export default function Bookmarks({ handleBookmarksClose }) {
       onKeyDown={keyDownHandler}
       tabIndex={0}
       id="bookmarks-menu"
+      role="region"
     >
       <div className="bookmarks-header">
         <h2 className="bookmarks__title">Bookmarks</h2>

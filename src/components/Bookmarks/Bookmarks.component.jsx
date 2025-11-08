@@ -36,6 +36,7 @@ export default function Bookmarks({ handleBookmarksClose }) {
       tabIndex={0}
       id="bookmarks-menu"
       role="region"
+      aria-label="bookmarks"
     >
       <div className="bookmarks-header">
         <h2 className="bookmarks__title">Bookmarks</h2>

@@ -71,7 +71,8 @@ const RecipeDetail = () => {
           </div>
           <div className="cooking-info">
             <p className="recipe-time">
-              <Clock3 role="presentation" /> {recipe.readyInMinutes} minutes
+              <Clock3 role="presentation" />
+              <span>{recipe.readyInMinutes} minutes</span>
             </p>
             <div
               className="servings-control"

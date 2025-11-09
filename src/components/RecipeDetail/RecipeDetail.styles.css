@@ -39,6 +39,7 @@
 .cooking-info {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding: 1rem;
   margin: 1rem 0;
@@ -49,10 +50,9 @@
 }
 
 .recipe-time {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .servings-control {
@@ -81,6 +81,10 @@
   margin-top: 1rem;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.directions-list {
+  padding-bottom: 1rem;
 }
 
 .directions h3 {

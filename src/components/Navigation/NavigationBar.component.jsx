@@ -4,6 +4,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Utensils, Menu } from "lucide-react";
 import SearchBar from "../Search/SearchBar.component";
 import Spinner from "../Spinner/Spinner.component";
+import { trapFocus } from "../../helpers/trapFocus";
 
 const Bookmarks = lazy(() => import("../Bookmarks/Bookmarks.component"));
 
@@ -33,8 +34,7 @@ function NavigationBar() {
   useEffect(() => {
     if (isMenuOpen) {
       let menu = document.querySelector("#nav-menu");
-      let firstFocusableElement = menu?.querySelector("input, button");
-      firstFocusableElement?.focus();
+      trapFocus(menu);
     }
   }, [isMenuOpen]);
 

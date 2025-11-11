@@ -10,11 +10,6 @@ import {
 
 function App() {
   useEffect(() => {
-    const app = document.querySelector("#app");
-    const firstFocusableElement = app?.querySelector(
-      "a, button, input, [tabindex='0']"
-    );
-    firstFocusableElement?.focus();
     return () => {
       // Axios.interceptors.request.eject(AxiosRequestInterceptor);
       Axios.interceptors.response.eject(AxiosResponseInterceptor);

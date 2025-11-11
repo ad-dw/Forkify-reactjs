@@ -3,6 +3,7 @@ import "./Bookmarks.style.css";
 import { BookmarkX, X } from "lucide-react";
 import { getItemFromLocalStorage } from "../../helpers/localstorage";
 import { useEffect } from "react";
+import { trapFocus } from "../../helpers/trapFocus";
 
 export default function Bookmarks({ handleBookmarksClose }) {
   const items = getItemFromLocalStorage("bookmarkedRecipes");
@@ -17,16 +18,7 @@ export default function Bookmarks({ handleBookmarksClose }) {
 
   useEffect(() => {
     const bookmarksMenu = document.getElementById("bookmarks-menu");
-    const elements = bookmarksMenu?.querySelectorAll(
-      "a, button, input, [tabindex='0']"
-    );
-    const lastElement = elements[elements.length - 1];
-    lastElement?.addEventListener("keydown", (e) => {
-      if (e.key === "Tab" && !e.shiftKey) {
-        e.preventDefault();
-      }
-    });
-    bookmarksMenu?.focus();
+    trapFocus(bookmarksMenu);
   }, []);
 
   return (

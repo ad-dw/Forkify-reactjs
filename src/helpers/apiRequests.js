@@ -10,7 +10,7 @@ export const searchRecipe = async (keyword, offset = 0) => {
     ongoingSearch = false;
   }
   const params = {
-    apiKey: import.meta.env.VITE_API_KEY,
+    apiKey: import.meta.env.VITE_PUBLIC_API_KEY,
     offset: offset,
     titleMatch: keyword,
     signal: controller.signal,
@@ -31,7 +31,7 @@ export const searchRecipe = async (keyword, offset = 0) => {
 export const searchRecipeDetails = async (id) => {
   try {
     const params = {
-      apiKey: import.meta.env.VITE_API_KEY,
+      apiKey: import.meta.env.VITE_PUBLIC_API_KEY,
     };
     const response = await Axios.get(`/${id}/information`, {
       params,

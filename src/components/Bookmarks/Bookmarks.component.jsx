@@ -55,6 +55,7 @@ export default function Bookmarks({ handleBookmarksClose }) {
           id="bookmarks-list"
           role="menu"
           itemRole="menuitem"
+          paginationNeeded={false}
         />
       )}
     </aside>

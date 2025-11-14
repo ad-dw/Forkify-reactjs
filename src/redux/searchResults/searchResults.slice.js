@@ -14,9 +14,8 @@ const INITIAL_STATE = {
 export const searchResultsAsync = createAsyncThunk(
   "searchResults/fetchSearchResults",
   async ({ searchTerm, offset }) => {
-    console.log("offset in thunk:", offset);
     const response = await searchRecipe(searchTerm, offset);
-    return response;
+    return { response, offset };
   }
 );
 
@@ -37,11 +36,12 @@ const searchResultSlice = createSlice({
       .addCase(searchResultsAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.pages = Math.ceil(
-          action.payload.totalResults / action.payload.results.length
+          action.payload.response.totalResults /
+            action.payload.response.results.length
         );
-        state.offset = state.offset + action.payload.results.length;
-        state.results = action.payload.results;
-        state.totalResults = action.payload.totalResults;
+        state.offset = action.payload.offset;
+        state.results = action.payload.response.results;
+        state.totalResults = action.payload.response.totalResults;
       })
       .addCase(searchResultsAsync.rejected, (state, action) => {
         state.loading = false;

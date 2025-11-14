@@ -2,7 +2,6 @@ import { Axios } from "../configuration/axios";
 import { notifyError } from "./notify";
 
 export const searchRecipe = async (keyword, offset = 0) => {
-  console.log("offset in apiRequests:", offset);
   let ongoingSearch = false;
   const controller = new AbortController();
   if (ongoingSearch) {
@@ -18,7 +17,6 @@ export const searchRecipe = async (keyword, offset = 0) => {
   try {
     ongoingSearch = true;
     const response = await Axios.get("/complexSearch", { params });
-    console.log(response);
     return response.data;
   } catch (error) {
     notifyError("Error searching recipe:", error.message);

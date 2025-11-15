@@ -13,6 +13,7 @@ const SearchResults = ({
   id,
   role = "list",
   itemRole = "listitem",
+  paginationNeeded = true,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
@@ -86,7 +87,7 @@ const SearchResults = ({
               />
             ))}
           </ul>
-          {totalResults > 10 && <Pagination />}
+          {totalResults > 10 && paginationNeeded && <Pagination />}
         </>
       );
     }

@@ -5,6 +5,7 @@
   min-height: 500px;
   display: flex;
   justify-content: center;
+  outline-offset: -0.25rem;
 }
 
 .recipe-detail {

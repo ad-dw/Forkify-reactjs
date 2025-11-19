@@ -72,6 +72,9 @@ const SearchResults = ({
         <p className="state-container">No results found.</p>
       ) : (
         <>
+          <p role="alert" aria-live="polite" className="screen-reader-content">
+            {totalResults} results found.
+          </p>
           <ul
             className="search-results-list"
             aria-label="search results"

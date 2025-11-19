@@ -10,3 +10,12 @@
   min-width: 300px;
   margin-top: 10rem;
 }
+
+.screen-reader-content {
+  height: 1px;
+  width: 1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}

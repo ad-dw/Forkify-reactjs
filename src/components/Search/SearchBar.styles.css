@@ -23,3 +23,12 @@
   border: none;
   cursor: pointer;
 }
+
+.screen-reader-content {
+  height: 1px;
+  width: 1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}

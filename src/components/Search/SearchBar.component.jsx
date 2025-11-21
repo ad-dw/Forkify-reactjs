@@ -5,11 +5,13 @@ import {
 } from "../../redux/searchResults/searchResults.slice";
 import { debounce } from "../../helpers/debounce";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSearchTotalResults } from "../../redux/searchResults/searchResults.selector";
 
 const SearchBar = ({ role }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
+  const totalResults = useSelector(selectSearchTotalResults);
 
   const debounceHandleChange = debounce((event) => {
     const value = event.target.value;
@@ -34,6 +36,9 @@ const SearchBar = ({ role }) => {
           debounceHandleChange(event);
         }}
       />
+      <p role="alert" aria-live="polite" className="screen-reader-content">
+        {totalResults} results found.
+      </p>
     </div>
   );
 };
